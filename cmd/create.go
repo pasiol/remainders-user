@@ -12,7 +12,8 @@ var createCmd = &cobra.Command{
 	Use:   "create",
 	Short: "Create a new user",
 	Long: `Create a new user and marking it approved. For example:
-	remainders-user create --username "Matti Möttönen" --password "qwerty" --mongouri "mongodb+srv://<username>:<password>@<host.domain.name>/<database>?retryWrites=true&w=majority"`,
+	remainders-user create --username "Matti Möttönen" --password "qwerty" --mongouri "mongodb+srv://<username>:<password>@<host.domain.name>/<database>?retryWrites=true&w=majority"
+	Look more how to generate mongodb uri from: https://docs.mongodb.com/manual/reference/connection-string/`,
 	Run: func(cmd *cobra.Command, args []string) {
 
 		username, _ := cmd.Flags().GetString("username")
