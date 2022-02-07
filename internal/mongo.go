@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func ConnectOrDie(uri string) (a *mongo.Database, b *mongo.Client) {
+func ConnectOrDie(uri string, dbName string) (a *mongo.Database, b *mongo.Client) {
 
 	client, err := mongo.NewClient(options.Client().ApplyURI(uri))
 	if err != nil {
@@ -18,7 +18,7 @@ func ConnectOrDie(uri string) (a *mongo.Database, b *mongo.Client) {
 	if err != nil {
 		log.Fatalf("fatal: %s", err)
 	}
-	var DB = client.Database("wilmaRemainders")
+	var DB = client.Database(dbName)
 	err = client.Ping(context.TODO(), nil)
 	if err != nil {
 		log.Fatalf("fatal: %s", err)
