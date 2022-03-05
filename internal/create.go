@@ -22,12 +22,12 @@ func hashAndSalt(password string) (string, error) {
 
 func getDbName(uri string) (string, error) {
 
-	begining, err := regexp.Compile(`(mongodb([+]srv:|)\/\/(\S*):(\S*)@(\S*)\/)`)
+	beginning, err := regexp.Compile(`(mongodb(\+srv|)://(\S*):(\S*)@(\S*)/)`)
 	if err != nil {
 		return "", err
 	}
 
-	match := begining.FindAllString(uri, -1)
+	match := beginning.FindAllString(uri, -1)
 	if len(match) > 0 {
 
 		dbName := strings.Replace(uri, match[0], "", 1)
